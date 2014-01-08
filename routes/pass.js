@@ -13,13 +13,12 @@ exports.sendData = function(req, res) {
 	console.log(req.headers);
 	console.log(req.body);
 
-	var params = req.params;
-	//params["token"] = req.body.pushToken;
-
 	request.post({
 		url: url,
 		form: {
-			params: params
+			params: {
+				a: req.params.a
+			}
 		}
 	}, function(err, response, body) {
  		res.send("respond with a resource");
