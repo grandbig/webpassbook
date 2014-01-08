@@ -4,7 +4,7 @@
  */
 
 var request = require('request');
-var url = "http://fy11-dev/cloudapp.net/hoge";
+var url = "http://fy11-dev.cloudapp.net/hoge";
 var params = {};
 
 exports.sendData = function(req, res) {
@@ -22,7 +22,7 @@ exports.sendData = function(req, res) {
 		form: {
 			params: params
 		}
-	}, function(err, res, body) {
+	}, function(err, response, body) {
  		res.send("respond with a resource");
 	});
 };
