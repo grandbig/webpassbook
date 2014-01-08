@@ -5,7 +5,6 @@
 
 var request = require('request');
 var url = "http://fy11-dev.cloudapp.net/hoge";
-var params = {};
 
 exports.sendData = function(req, res) {
 	console.log(req);
@@ -14,8 +13,8 @@ exports.sendData = function(req, res) {
 	console.log(req.headers);
 	console.log(req.body);
 
-	params = req.params;
-	params.push(req.body.pushToken);
+	var params = req.params;
+	params["token"] = req.body.pushToken;
 
 	request.post({
 		url: url,
