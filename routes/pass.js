@@ -17,7 +17,11 @@ exports.sendData = function(req, res) {
 		url: url,
 		form: {
 			params: {
-				a: req.params.a
+				deviceLibraryID: req.params.a,
+				passTypeID: req.params.b,
+				serialNumber: req.params.c,
+				pushToken: req.body.pushToken,
+				authorization: req.headers.authorization
 			}
 		}
 	}, function(err, response, body) {
