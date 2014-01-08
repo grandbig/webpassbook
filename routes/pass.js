@@ -13,6 +13,8 @@ exports.sendData = function(req, res) {
 	console.log(req.headers);
 	console.log(req.body);
 
+	var authorization = req.headers.authorization.replace("ApplePass ", "");
+
 	request.post({
 		url: url,
 		form: {
@@ -21,7 +23,7 @@ exports.sendData = function(req, res) {
 				passTypeID: req.params.b,
 				serialNumber: req.params.c,
 				pushToken: req.body.pushToken,
-				authorization: req.headers.authorization
+				authorization: authorization
 			}
 		}
 	}, function(err, response, body) {
