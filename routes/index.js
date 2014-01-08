@@ -14,8 +14,8 @@ exports.index = function(req, res){
 		form: {
 			params: {uid: "1204263"}
 		}
-	}, function(err, res, body) {
-		//res.render('index', { title: 'Express' });
+	}, function(err, response, body) {
+		res.render('index', { title: 'Express' });
 		console.log("ok");
   	});
 };
