@@ -6,6 +6,7 @@
 var express = require('express');
 var routes = require('./routes');
 var user = require('./routes/user');
+var pass = require('./routes/pass');
 var http = require('http');
 var path = require('path');
 
@@ -30,14 +31,7 @@ if ('development' == app.get('env')) {
 
 app.get('/', routes.index);
 app.get('/users', user.list);
-app.post('/hoge/v1/devices/:a/registrations/:b/:c', function(req, res){
-	console.log(req);
-	console.log(req.params);
-	console.log(req.url);
-	console.log(req.headers);
-	console.log(req.body);
-	res.end();
-});
+app.post('/sendParam/v1/devices/:a/registrations/:b/:c', pass.sendData);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
