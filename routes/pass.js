@@ -14,7 +14,7 @@ exports.sendData = function(req, res) {
 	console.log(req.body);
 
 	var params = req.params;
-	params["token"] = req.body.pushToken;
+	//params["token"] = req.body.pushToken;
 
 	request.post({
 		url: url,
