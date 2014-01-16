@@ -31,7 +31,18 @@ if ('development' == app.get('env')) {
 
 app.get('/', routes.index);
 app.get('/users', user.list);
-app.post('/sendParam/v1/devices/:a/registrations/:b/:c', pass.sendData);
+
+// pass create
+app.post('/sendParam/v1/devices/:deviceLibraryID/registrations/:passTypeID/:serialNumber', pass.createData);
+
+// pass update
+app.get('/sendParam/v1/passes/:passTypeID/:serialNumber', pass.updateData);
+
+// pass log
+app.post('/sendParam/v1/log', pass.logData);
+
+// pass delete
+app.delete('/sendParam/v1/devices/:deviceLibraryID/registrations/:passTypeID/:serialNumber', pass.deleteData);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
