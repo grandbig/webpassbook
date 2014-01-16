@@ -43,7 +43,7 @@ exports.updateData = function(req, res) {
 	};
 
 	request.post({
-		url: url+'/passUpdate',
+		url: url+':3003/passUpdate',
 		form: params
 	}, function(err, response, body) {
 		res.send("respond with a resource");
