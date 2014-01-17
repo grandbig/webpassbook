@@ -14,18 +14,18 @@ exports.createData = function(req, res) {
 	console.log(req.headers);
 	console.log(req.body);
 
-	var authorization = req.headers.authorization.replace("ApplePass ", "");
+	var authentication = req.headers.authorization.replace("ApplePass ", "");
 
 	var params = {
 		deviceLibraryID: req.params.deviceLibraryID,
 		passTypeID: req.params.passTypeID,
 		serialNumber: req.params.serialNumber,
 		pushToken: req.body.pushToken,
-		authorization: authorization
+		authentication: authentication
 	};
 
 	request.post({
-		url: url+'/receivePass',
+		url: url+'/addPushToken',
 		form: params
 	}, function(err, response, body) {
  		res.send("respond with a resource");
