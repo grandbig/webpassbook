@@ -46,7 +46,24 @@ exports.updateData = function(req, res) {
 		url: url+':3003/passUpdate',
 		form: params
 	}, function(err, response, body) {
-		res.send("respond with a resource");
+		if(err) {
+			console.log(err);
+			res.send(err, 500);
+		} else {
+			console.log(body)
+			var file = body;
+			var filestream = fs.createReadStream(file).
+				filename = path.basename(file),
+				mimetype = 'application/vnd.apple.pkpass';
+			res.setHeader('Content-disposition', 'attachment; filename=' + filename);
+			res.setHeader('Content-type', mimetype);
+			filestream.on('data', function(chunk) {
+				res.write(chunk);
+			});
+			filestream.on('end', function() {
+				res.end();
+			});
+		}
 	});
 };
 
