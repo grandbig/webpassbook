@@ -51,7 +51,7 @@ exports.updateData = function(req, res) {
 			res.send(err, 500);
 		} else {
 			console.log(body)
-			var file = 'http://createpassbook.cloudapp.net:3003/passdata/'+body+'.pkpass';
+			var file = 'http://fy11-dev.cloudapp.net:3003/passdata/'+body+'.pkpass';
 			var filestream = fs.createReadStream(file),
 				filename = path.basename(file),
 				mimetype = 'application/vnd.apple.pkpass';
