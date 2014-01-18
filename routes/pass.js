@@ -50,19 +50,20 @@ exports.updateData = function(req, res) {
 			console.log(err);
 			res.send(err, 500);
 		} else {
-			console.log(body)
-			var file = 'http://fy11-dev.cloudapp.net:3003/passdata/'+body+'.pkpass';
-			var filestream = fs.createReadStream(file),
-				filename = path.basename(file),
-				mimetype = 'application/vnd.apple.pkpass';
-			res.setHeader('Content-disposition', 'attachment; filename=' + filename);
-			res.setHeader('Content-type', mimetype);
-			filestream.on('data', function(chunk) {
-				res.write(chunk);
-			});
-			filestream.on('end', function() {
-				res.end();
-			});
+			res.send({}, 304);
+		//	console.log(body)
+		//	var file = 'http://fy11-dev.cloudapp.net:3003/passdata/'+body+'.pkpass';
+		//	var filestream = fs.createReadStream(file),
+		//		filename = path.basename(file),
+		//		mimetype = 'application/vnd.apple.pkpass';
+		//	res.setHeader('Content-disposition', 'attachment; filename=' + filename);
+		//	res.setHeader('Content-type', mimetype);
+		//	filestream.on('data', function(chunk) {
+		//		res.write(chunk);
+		//	});
+		//	filestream.on('end', function() {
+		//		res.end();
+		//	});
 		}
 	});
 };
