@@ -4,7 +4,7 @@
  */
 
 var request = require('request');
-var url = "http://fy11-dev.cloudapp.net";
+var url = "http://fy11.cloudapp.net";
 
 // Passを追加したときの処理
 exports.createData = function(req, res) {
@@ -50,23 +50,23 @@ exports.updateData = function(req, res) {
 			console.log(err);
 			res.send(err, 500);
 		} else {
-		//	res.send({}, 304);
-			console.log(body);
-			var params = body,
-				filestream = params.filestream,
-				filename = params.filename;
+			res.send({}, 304);
+		//	console.log(body);
+		//	var params = body,
+		//		filestream = params.filestream,
+		//		filename = params.filename;
 		//	var file = 'http://fy11-dev.cloudapp.net:3003/passdata/'+body+'.pkpass';
 		//	var filestream = fs.createReadStream(file),
 		//		filename = path.basename(file),
-			var mimetype = 'application/vnd.apple.pkpass';
-			res.setHeader('Content-disposition', 'attachment; filename=' + filename);
-			res.setHeader('Content-type', mimetype);
-			filestream.on('data', function(chunk) {
-				res.write(chunk);
-			});
-			filestream.on('end', function() {
-				res.end();
-			});
+		//	var mimetype = 'application/vnd.apple.pkpass';
+		//	res.setHeader('Content-disposition', 'attachment; filename=' + filename);
+		//	res.setHeader('Content-type', mimetype);
+		//	filestream.on('data', function(chunk) {
+		//		res.write(chunk);
+		//	});
+		//	filestream.on('end', function() {
+		//		res.end();
+		//	});
 		}
 	});
 };
